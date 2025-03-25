@@ -10,8 +10,6 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret-key-goes-here'
 
 # CREATE DATABASE
-
-
 class Base(DeclarativeBase):
     pass
 
@@ -117,8 +115,6 @@ def logout():
 @app.route('/download')
 @login_required
 def download():
-
-    # return send_from_directory('/static/files/', 'cheat_sheet.pdf')
     return send_from_directory('static', path="files/cheat_sheet.pdf")
 
 
