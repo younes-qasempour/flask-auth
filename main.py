@@ -63,14 +63,14 @@ def register():
             method='pbkdf2:sha256',
             salt_length=8
         )
-        new_user = User(
+        user_instance  = User(
             email=request.form.get('email'),
             password=hash_and_salted_password,
             name=request.form.get('name'),
         )
-        db.session.add(new_user)
+        db.session.add(user_instance )
         db.session.commit()
-        login_user(new_user)
+        login_user(user_instance )
         return redirect(url_for("secrets"))
 
     return render_template("register.html", logged_in=current_user.is_authenticated)
